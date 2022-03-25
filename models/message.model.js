@@ -5,10 +5,10 @@ module.exports = mongoose => {
         {
             when: Date,
             user: String,
-            roomone: Boolean,
-            roomtwo: Boolean,
-            roomthree: Boolean,
-            roomfour: Boolean,
+            room1: { type: Boolean, default: false },
+            room2: { type: Boolean, default: false },
+            room3: { type: Boolean, default: false },
+            room4: { type: Boolean, default: false },
             body: String
         }))
     return Message;

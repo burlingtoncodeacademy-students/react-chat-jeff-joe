@@ -1,0 +1,84 @@
+.App {
+    background-color: rgb(91, 91, 91);
+}
+h1 {
+    display:flex;
+    justify-content: center;
+
+    border: 2px solid black;
+}
+h3 {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    margin: 0.5rem;
+
+
+}
+.header{
+    display:flex;
+    justify-content: center;
+
+    width: 100%;
+}
+.sidebarWrap{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    /* margin: 0.5rem; */
+    /* background-color: #000000; */
+
+
+}
+a {
+    display: flex;
+    justify-content: flex-start;
+    color: black;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+a:hover {
+    display: flex;
+    justify-content: flex-start;
+    color: rgb(255, 255, 255);
+}
+ul {
+    padding: 0px;
+    border: 2px solid black;
+}
+
+
+button {
+	cursor: pointer;
+	display: block;
+	position: relative;
+	/* border: 2px solid #000000; */
+    background-color: rgb(203, 204, 112);
+	transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+button:hover {
+	background-color: transparent;
+	text-shadow: ntwo;
+}
+
+
+
+.content{
+    margin: 0.5rem;
+    display: flex;
+    justify-content: baseline;
+    align-items: flex-end;
+    height:20rem;
+    border: 2px solid black;
+    background-color: rgb(49, 49, 49);
+}
+.display {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}

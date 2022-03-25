@@ -1,12 +1,25 @@
 import './App.css';
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
 import Room1 from './components/room1.js';
 import Room2 from './components/room2.js';
 import Room3 from './components/room3.js';
 // const mongoose = require('mongoose')
 // mongoose.connect("localhost://27017/messages")
 function App() {
+  function Registry() {
+    const [allMessages, setAllMessages] = useState([])
+    useEffect(() => {
+      fetch("http://localhose:5000/messages")
+        .then((res) => {
+          return res.json()
+        })
+        .then((json) => {
+          setAllMessages(json)
+        });
+    }, []);
+  }
   return (
     <main>
           <style src="./App.css"></style>

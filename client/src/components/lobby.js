@@ -25,7 +25,6 @@ export default function Lobby() {
                                 <td>{entry.date}</td>
                                 <td>{entry.userName}</td>
                                 <td>{entry.body}</td>
-
                             </tr>
                             )})}
                     </tbody>

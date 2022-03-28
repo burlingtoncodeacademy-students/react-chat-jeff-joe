@@ -1,11 +1,12 @@
-import React from 'react';
-import '../App.css';
 import { useState, useEffect } from "react";
 
-export default function Room2() {
+import React from 'react';
+import '../App.css';
+
+export default function Lobby() {
     const [allMessages, setAllMessages] = useState([])
     useEffect(() => {
-      fetch("http://localhost:5000/messages")
+      fetch("http://localhost:5000/allmessages")
         .then((res) => {
           return res.json()
         })
@@ -13,11 +14,8 @@ export default function Room2() {
           setAllMessages(json)
         });
     }, []);
-
     return(
         <>
-            placeholder text
-            <>
             <div className='entries'>
                 <table>
                     <tbody>
@@ -27,16 +25,12 @@ export default function Room2() {
                                 <td>{entry.date}</td>
                                 <td>{entry.userName}</td>
                                 <td>{entry.body}</td>
-
                             </tr>
                             )})}
                     </tbody>
                 </table>
             </div>
             
-        </>
-
-
         </>
     )
 }

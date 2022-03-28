@@ -1,4 +1,4 @@
-.App {
+body {
     background-color: rgb(91, 91, 91);
 }
 h1 {
@@ -23,7 +23,7 @@ h3 {
 }
 .sidebarWrap{
     display: flex;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     justify-content: center;
     
 }

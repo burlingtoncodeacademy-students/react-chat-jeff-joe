@@ -4,9 +4,10 @@ import React from 'react';
 import '../App.css';
 
 export default function Lobby() {
+  //use effect to fetch and display messages
     const [allMessages, setAllMessages] = useState([])
     useEffect(() => {
-      fetch("http://localhost:5000/allmessages")
+      fetch("mongodb://localhost:27017/messages")
         .then((res) => {
           return res.json()
         })
@@ -16,18 +17,40 @@ export default function Lobby() {
     }, []);
     return(
         <>
-            <div className='entries'>
+            <div className='messages'>
                 <table>
                     <tbody>
-                        {allMessages.map((entry) => {
+                      {/* MAPS MESSAGES INTO READABLE BOXES */}
+                        {allMessages.map((message) => {
                             return(
-                            <tr key={entry._id}>
-                                <td>{entry.date}</td>
-                                <td>{entry.userName}</td>
-                                <td>{entry.body}</td>
+                            <tr key={message._id}>
+                                <td>{message.date}</td>
+                                <td>{message.userName}</td>
+                                <td>{message.msg}</td>
                             </tr>
                             )})}
                     </tbody>
+                    <tfoot>
+                <tr>
+                  {/* SUBMIT INPUT */}
+                  <td colSpan="4">
+                    <form action="/create" method="POST">
+                      <input
+                        type="text"
+                        name="userName"
+                        placeholder="Display Name"
+                      />
+
+                      <input
+                        type="text"
+                        name="msg"
+                        placeholder="Send a chat"
+                      />
+                      <input type="submit" value="Send!" />
+                    </form>
+                  </td>
+                </tr>
+              </tfoot>
                 </table>
             </div>
             

@@ -3,9 +3,10 @@ import '../App.css';
 import { useState, useEffect } from "react";
 
 export default function Room2() {
+    //use effect to fetch and display messages
     const [allMessages, setAllMessages] = useState([])
     useEffect(() => {
-      fetch("http://localhost:5000/messages")
+      fetch("http://localhost:5000/messages2")
         .then((res) => {
           return res.json()
         })
@@ -16,7 +17,6 @@ export default function Room2() {
 
     return(
         <>
-            placeholder text
             <>
             <div className='entries'>
                 <table>

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
+const MessageSchema = require('./models/message.model.js')
 
 // Parse requests of content-type application/json
 app.use(bodyParser.json());
@@ -13,9 +14,11 @@ app.use(cors());
 // Allows us to understand urlencoded payloads
 app.use(bodyParser.urlencoded({ extended:true }));
 
-const db = require("./models");
-db.mongoose
-  .connect(db.url, {
+// const db = require("./models");
+
+//connects to our messages database
+mongoose
+  .connect("mongodb://localhost:27017/messages", {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -27,15 +30,24 @@ db.mongoose
     process.exit();
   });
 
+  const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error"));
+
 // Get all messages
-app.get('/allmessages', (req, res) => {
-    Message.find({}, function(err, messages) {
-      let messageMap = {}
-      messages.forEach(function(message) {
-        messageMap[message._id] = message
-      })
-      res.send(messageMap)
-    })
+
+const Message = mongoose.model("messages", MessageSchema)
+
+
+app.get('/allmessages', async (req, res) => {
+    const allMessages = await Message.find({})
+    //   , function(err, messages) {
+    //   let messageMap = {}
+    //   db.messages.forEach(function(message) {
+    //     messageMap[message._id] = message
+    //   })
+    // })
+    res.json(allMessages)
 })
 
 // Post message
@@ -47,7 +59,7 @@ app.post("/create", async (req, res) => {
         room2: req.body.room2,
         room3: req.body.room3,
         room4: req.body.room4,
-        body: req.body.body
+        msg: req.body.msg
     })
   await newMessage.save()
   res.redirect("/")

@@ -3,6 +3,7 @@ import '../App.css';
 import { useState, useEffect } from "react";
 
 export default function Room1() {
+    //use effect to fetch and display messages
     const [allMessages, setAllMessages] = useState([])
     useEffect(() => {
       fetch("http://localhost:5000/messages")

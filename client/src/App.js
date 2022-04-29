@@ -19,6 +19,7 @@ function App() {
         <div className="display">
           <h3>Current Room</h3>
         <div className="content">
+        {/* CONTENT ROUTES */}
           <Routes>
           <Route path='/' element={<Lobby />}>
             </Route>
@@ -30,19 +31,21 @@ function App() {
           </Route>
             </Routes>
           </div>
-      <div className='inputs'>
+      {/* Inputs for submiting */}
+      {/* <div className='inputs'>
       <form action='/create' method='POST'>
       <input type='text' name='userName' placeholder='Display Name' />
-      <input type='text' name='body' placeholder='Send a Message' />
+      <input type='text' name='msg' placeholder='Send a Message' />
       <button type='submit'>SEND</button>
       <button type='submit'>REFRESH</button>
       </form>
-      </div>
+      </div> */}
       </div>
       <div className="nav">
         <h3>Available Rooms</h3>
         <ul>
         <h4>Rooms</h4>
+      {/* React Router Links */}
       <div className='links'>
       <button><Link to='/'>Lobby</Link></button>
       <button><Link to='/room1'>Room 1</Link></button>
